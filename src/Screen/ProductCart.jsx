@@ -1,19 +1,11 @@
 import React, { useState } from "react";
 import { View, Text, Image } from "react-native";
 import { AntDesign } from "react-native-vector-icons";
-import Button from "../Components/Button/Button";
+import ButtonAdd from "../Components/Button/ButtomAdd/ButtonAdd";
 import CoreModal from "../Components/Modal/CoreModal";
 import { styles } from "../Screen/CartStyles";
 
-function ProductCart({
-  id,
-  title,
-  description,
-  ingredients,
-  image,
-  price,
-  data,
-}) {
+function ProductCart({ id, title, description, ingredients, image, price, addToCart }) {
   const [count, setCount] = useState(1);
   const [modal, setModal] = useState(false);
   const [selectProduct, setSelectProduct] = useState(null);
@@ -36,7 +28,9 @@ function ProductCart({
       count: count,
       price: price * count,
     };
-    setCartItems([...cartItems, newItem]);
+    setCartItems((prevItems) => [...prevItems, newItem]);
+    setSelectProduct(null);
+    setCount(1);
     setModal(false);
   };
 
@@ -69,7 +63,21 @@ function ProductCart({
             ></AntDesign>
           </View>
           <View style={styles.button}>
-            <Button title="Añadir" onPress={() => onHandleAdd(id)} />
+            <ButtonAdd title="Add Product" 
+            onPress={() =>
+               {
+                addToCart({
+                  id: id,
+                  title: title,
+                  description: description,
+                  ingredients: ingredients,
+                  image: image,
+                  price: price,
+                }),
+                onHandleAdd({
+                  id: id
+                });
+               }} />
           </View>
         </View>
       </View>

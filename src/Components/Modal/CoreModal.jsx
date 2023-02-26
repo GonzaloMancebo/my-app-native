@@ -9,7 +9,6 @@ import {
 import data from "./../../data/data";
 import { styles } from "./CoreStyle";
 import { AntDesign } from "react-native-vector-icons";
-import { useState } from "react";
 
 const CoreModal = ({
   modal,
@@ -36,6 +35,8 @@ const CoreModal = ({
 
   return (
     <Modal visible={modal}>
+      <Text style={styles.title}>Purchase summary</Text>
+
       <View style={styles.card}>
         <View style={styles.container}>
           <View style={styles.firstColumn}>
@@ -71,16 +72,23 @@ const CoreModal = ({
       <Text> Total: $ {formattedPrice}</Text>
 
       <View style={styles.addcontainer}>
-        <View style={styles.addproduct}>
-          <Button title="Add more products" onPress={handleAddProductPress} />
-        </View>
-        <View style={styles.finishproduct}>
-          <Button
-            title="Checkout"
-            color={"red"}
-            onPress={() => console.log("Compra realizada")}
-          />
-        </View>
+        {selectProduct && (
+          <>
+            <View style={styles.addproduct}>
+              <Button
+                title="Add more products"
+                onPress={handleAddProductPress}
+              />
+            </View>
+            <View style={styles.finishproduct}>
+              <Button
+                title="Checkout"
+                color={"red"}
+                onPress={() => console.log("Compra realizada")}
+              />
+            </View>
+          </>
+        )}
       </View>
     </Modal>
   );

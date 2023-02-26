@@ -1,8 +1,8 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
-import { styles } from "../Button/ButtonStyle";
+import { styles } from "./ButtonStyle";
 
-const Button = ({ title, onPress }) => {
+const ButtonAdd = ({ title, onPress }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.btn}>
       <Text style={styles.title}> {title} </Text>
@@ -10,4 +10,4 @@ const Button = ({ title, onPress }) => {
   );
 };
 
-export default Button;
+export default ButtonAdd;

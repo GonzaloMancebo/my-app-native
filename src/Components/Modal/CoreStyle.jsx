@@ -67,6 +67,10 @@ export const styles = StyleSheet.create({
     marginTop: 60,
     fontWeight: "bold",
   },
+  title: {
+    fontWeight: "bold",
+    marginTop: 6,
+  },
   total: {
     fontWeight: "bold",
     marginTop: 10,
