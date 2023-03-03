@@ -5,33 +5,22 @@ import ButtonAdd from "../Components/Button/ButtomAdd/ButtonAdd";
 import CoreModal from "../Components/Modal/CoreModal";
 import { styles } from "../Screen/CartStyles";
 
-function ProductCart({ id, title, description, ingredients, image, price, addToCart }) {
+function ProductCart({
+  id,
+  title,
+  description,
+  ingredients,
+  image,
+  price,
+  addToCart,
+}) {
   const [count, setCount] = useState(1);
   const [modal, setModal] = useState(false);
   const [selectProduct, setSelectProduct] = useState(null);
-  const [cartItems, setCartItems] = useState([]);
 
   const onHandleAdd = (id) => {
     setSelectProduct(id);
     setModal(!modal);
-  };
-
-  const onDeleteProduct = (productId) => {
-    const newCartItems = cartItems.filter((item) => item.id !== productId);
-    setCartItems(newCartItems);
-    setModal(false);
-  };
-
-  const handleAddProduct = () => {
-    const newItem = {
-      id: selectProduct,
-      count: count,
-      price: price * count,
-    };
-    setCartItems((prevItems) => [...prevItems, newItem]);
-    setSelectProduct(null);
-    setCount(1);
-    setModal(false);
   };
 
   return (
@@ -63,21 +52,17 @@ function ProductCart({ id, title, description, ingredients, image, price, addToC
             ></AntDesign>
           </View>
           <View style={styles.button}>
-            <ButtonAdd title="Add Product" 
-            onPress={() =>
-               {
+            <ButtonAdd
+              title="Add Product"
+              onPress={() => {
                 addToCart({
                   id: id,
-                  title: title,
-                  description: description,
-                  ingredients: ingredients,
-                  image: image,
-                  price: price,
                 }),
-                onHandleAdd({
-                  id: id
-                });
-               }} />
+                  onHandleAdd({
+                    id: id,
+                  });
+              }}
+            />
           </View>
         </View>
       </View>
@@ -86,9 +71,7 @@ function ProductCart({ id, title, description, ingredients, image, price, addToC
         setModal={setModal}
         selectProduct={selectProduct}
         price={price * count}
-        onDeleteProduct={onDeleteProduct}
         count={count}
-        handleAddProduct={handleAddProduct}
       />
     </View>
   );

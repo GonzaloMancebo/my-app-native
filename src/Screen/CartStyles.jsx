@@ -82,9 +82,10 @@ export const styles = StyleSheet.create({
     marginTop: -42,
   },
   card: {
-    borderBottomWidth: 2,
-    borderBottomColor: "black",
+    marginTop: 10,
     borderStyle: "solid",
     paddingBottom: 10,
+    backgroundColor: "rgba(244, 232, 238, 0.8)",
+    borderRadius: 30,
   },
 });

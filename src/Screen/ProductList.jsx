@@ -27,8 +27,12 @@ function ProductList() {
   console.log(cartCount);
 
   return (
-    <View>
-      <ImageBackground source={imageback} style={styles.imageBack}>
+    <View style = {styles.container}>
+      <ImageBackground
+        source={imageback}
+        style={styles.imageBack}
+        resizeMode={"cover"}
+      >
         <StatusBar style="auto" />
         <View style={styles.cart}>
           <Text style={styles.title}>
@@ -40,21 +44,23 @@ function ProductList() {
             </TouchableOpacity>
           </Text>
         </View>
-      </ImageBackground>
 
-      <FlatList
-        style={styles.flat}
-        data={data}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <ProductCart {...item} addToCart={addToCart} />
-        )}
-      />
+        <FlatList
+          data={data}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => (
+            <ProductCart {...item} addToCart={addToCart} />
+          )}
+        />
+      </ImageBackground>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
   title: {
     fontSize: 30,
     textAlign: "center",
@@ -65,6 +71,7 @@ const styles = StyleSheet.create({
 
   imageBack: {
     backgroundColor: "transparent",
+    flex: 1,
   },
 
   count: {

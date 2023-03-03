@@ -2,20 +2,21 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   modalContainer: {
-    flexDirection: "row",
-    backgroundColor: "blue"
-    },
-  card: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)", // opcional para establecer un fondo semitransparente
     justifyContent: "center",
     alignItems: "center",
-    flex: 1,
-    borderWidth: 2,
-    borderStyle: "solid",
-    padding: 10,
-    height: "20%",
-    backgroundColor: "red",
-    borderRadius: 100,
-    height: 70,
-    width: 250,
   },
+  card: {
+    height: 70,
+    backgroundColor: "red",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 30,
+  },
+  cartCount:{
+    textAlign: "center",
+    justifyContent: "center",
+
+  }
 });
