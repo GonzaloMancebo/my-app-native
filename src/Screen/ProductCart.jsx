@@ -72,6 +72,8 @@ function ProductCart({
         selectProduct={selectProduct}
         price={price * count}
         count={count}
+        title={title}
+        image={image}
       />
     </View>
   );
