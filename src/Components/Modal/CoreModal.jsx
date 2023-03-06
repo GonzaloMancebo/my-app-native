@@ -10,33 +10,36 @@ import {
 import { styles } from "./CoreStyle";
 import { AntDesign } from "react-native-vector-icons";
 import BottomSheet from "react-native-simple-bottom-sheet";
-import { ScrollView } from "react-native-gesture-handler";
 
-const CoreModal = ({ modal, count, title, price, image }) => {
+const CoreModal = ({ modal, count, title, price, image, handleCloseModal }) => {
   const [showProductDetailModal, setShowProductDetailModal] = useState(false);
 
   const handleShowProductDetail = () => {
     setShowProductDetailModal(true);
   };
 
+  const handleFinishOrder = () => {
+    handleCloseModal();
+    setShowProductDetailModal(false);
+  };
+
+  const handleAddMoreProducts = () => {
+    setShowProductDetailModal(false);
+  };
+
   return (
     <>
-      <Modal visible={modal} animationType="slide">
-        <View style={styles.modalContainer}>
-          <BottomSheet isOpen>
-            <View style={styles.card}>
-              <ScrollView>
-                <TouchableOpacity
-                  style={styles.touch}
-                  onPress={handleShowProductDetail}
-                >
-                  <Text style={styles.cartCount}>{count}</Text>
-
-                  <AntDesign name="shoppingcart" size={24} color="black" />
-                </TouchableOpacity>
-              </ScrollView>
-            </View>
-          </BottomSheet>
+      <Modal transparent visible={modal} animationType="slide" style ={styles.hola}>
+        <View style={styles.viewmodal}>
+          <View style={styles.card}>
+            <TouchableOpacity
+              style={styles.touch}
+              onPress={handleShowProductDetail}
+            >
+              <Text style={styles.cartCount}>{count}</Text>
+              <AntDesign name="shoppingcart" size={24} color="black" />
+            </TouchableOpacity>
+          </View>
         </View>
       </Modal>
 
@@ -63,18 +66,19 @@ const CoreModal = ({ modal, count, title, price, image }) => {
           </View>
         </View>
         <Text style={styles.productCount}>Total: $ {price}</Text>
-
         <TouchableOpacity style={styles.addToCartButton}>
           <View style={styles.btn}>
             <Button
               title="  Add more"
               style={styles.addmore}
-              onPress={() => setShowProductDetailModal(false)}
+              onPress={handleAddMoreProducts}
             ></Button>
+            <View></View>
             <Button
               title="    Finish order"
               color={"red"}
               style={styles.finish}
+              onPress={handleFinishOrder}
             ></Button>
           </View>
         </TouchableOpacity>

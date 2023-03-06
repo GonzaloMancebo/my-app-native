@@ -17,10 +17,22 @@ function ProductCart({
   const [count, setCount] = useState(1);
   const [modal, setModal] = useState(false);
   const [selectProduct, setSelectProduct] = useState(null);
+  const [buttonColor, setButtonColor] = useState("#000000");
 
   const onHandleAdd = (id) => {
     setSelectProduct(id);
     setModal(!modal);
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      id,
+      count,
+    });
+    onHandleAdd({
+      id,
+    });
+    setCount(1);
   };
 
   return (
@@ -54,14 +66,7 @@ function ProductCart({
           <View style={styles.button}>
             <ButtonAdd
               title="Add Product"
-              onPress={() => {
-                addToCart({
-                  id: id,
-                }),
-                  onHandleAdd({
-                    id: id,
-                  });
-              }}
+              onPress={handleAddToCart}
             />
           </View>
         </View>

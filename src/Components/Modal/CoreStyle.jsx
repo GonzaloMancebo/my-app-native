@@ -7,13 +7,7 @@ export const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
   },
-  card: {
-    height: 70,
-    backgroundColor: "red",
-    alignItems: "center",
-    justifyContent: "center",
-    borderRadius: 30,
-  },
+
   touch: {
     height: 80,
     width: 300,
@@ -87,6 +81,18 @@ export const styles = StyleSheet.create({
   btn: {
     flexDirection: "row",
     justifyContent: "center",
-    marginTop: 20,
+    marginTop: 30,
+  },
+
+  viewmodal: {
+    flex: 1,
+    justifyContent: "flex-end",
+  },
+
+  card: {
+    backgroundColor: "red",
+    alignItems: "center",
+    shadowColor: "#000",
+    borderRadius: 200,
   },
 });
