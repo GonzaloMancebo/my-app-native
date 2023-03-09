@@ -1,11 +1,9 @@
 import React from "react";
-import ProductList from "./src/Screen/ProductList";
+import AppLoading from "expo-app-loading";
+import ShopNavigator from "./src/Navigation/ShopNavigator";
 
 function App() {
-  return (<ProductList />
-  
-  
-  );
+  return <ShopNavigator />;
 }
 
 export default App;

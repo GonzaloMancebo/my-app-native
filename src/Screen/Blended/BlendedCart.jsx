@@ -1,38 +1,41 @@
 import React, { useState } from "react";
 import { View, Text, Image } from "react-native";
 import { AntDesign } from "react-native-vector-icons";
-import ButtonAdd from "../Components/Button/ButtomAdd/ButtonAdd";
-import CoreModal from "../Components/Modal/CoreModal";
-import { styles } from "../Screen/CartStyles";
+import ButtonAdd from "../../Components/Button/ButtomAdd/ButtonAdd";
+import CoreModal from "../../Components/Modal/CoreModal";
+import { styles } from "../Blended/BlendedStyles";
 
-function ProductCart({
+function BlendedCart({
   id,
   title,
   description,
   ingredients,
   image,
   price,
-  addToCart,
 }) {
   const [count, setCount] = useState(1);
   const [modal, setModal] = useState(false);
-  const [selectProduct, setSelectProduct] = useState(null);
-  const [buttonColor, setButtonColor] = useState("#000000");
+  const [selectProduct, setSelectProduct] = useState([]);
+  const [cart, setCart] = useState([]);
 
-  const onHandleAdd = (id) => {
-    setSelectProduct(id);
-    setModal(!modal);
+
+  const onHandleAdd = (id, count, price) => {
+    setSelectProduct({id, count, price});
+    setModal(true);
   };
 
+
   const handleAddToCart = () => {
-    addToCart({
-      id,
-      count,
-    });
-    onHandleAdd({
-      id,
-    });
+    const product = { id, title, description, ingredients, image, price, count };
+    setCart([...cart, product]);
+    onHandleAdd(id);
     setCount(1);
+  };
+
+
+  const handleCloseModal = () => {
+    setModal(false);
+    setSelectProduct(null);
   };
 
   return (
@@ -40,12 +43,12 @@ function ProductCart({
       <View key={id} style={styles.container}>
         <View style={styles.firstColumn}>
           <Text style={styles.title}>{title}</Text>
-          <Text style={styles.ingredients}>{ingredients}</Text>
+          <Text style={styles.ingredients}>{description}</Text>
           <Image style={styles.image} source={{ uri: image }} />
         </View>
         <View style={styles.column}>
           <View style={styles.row}>
-            <Text style={styles.textDetail}>{description}</Text>
+            <Text style={styles.textDetail}>{ingredients}</Text>
           </View>
           <View>
             <Text style={styles.text}>$ {price * count}</Text>
@@ -64,10 +67,7 @@ function ProductCart({
             ></AntDesign>
           </View>
           <View style={styles.button}>
-            <ButtonAdd
-              title="Add Product"
-              onPress={handleAddToCart}
-            />
+            <ButtonAdd title="Add Product" onPress={() => onHandleAdd (id, count, price * count)} />
           </View>
         </View>
       </View>
@@ -75,13 +75,12 @@ function ProductCart({
         modal={modal}
         setModal={setModal}
         selectProduct={selectProduct}
-        price={price * count}
-        count={count}
         title={title}
         image={image}
+        onCloseModal = {handleCloseModal}
       />
     </View>
   );
 }
 
-export default ProductCart;
+export default BlendedCart;

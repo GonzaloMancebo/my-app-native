@@ -5,42 +5,54 @@ import {
   Text,
   TouchableOpacity,
   Image,
+  TouchableWithoutFeedback,
   Button,
 } from "react-native";
-import { styles } from "./CoreStyle";
+import { styles } from "../Modal/CoreStyle";
 import { AntDesign } from "react-native-vector-icons";
-import BottomSheet from "react-native-simple-bottom-sheet";
 
-const CoreModal = ({ modal, count, title, price, image, handleCloseModal }) => {
+const CoreModal = ({ modal, title, image, setModal, selectProduct, onCloseModal }) => {
   const [showProductDetailModal, setShowProductDetailModal] = useState(false);
 
   const handleShowProductDetail = () => {
+    console.log("show product detail modal");
     setShowProductDetailModal(true);
   };
 
   const handleFinishOrder = () => {
-    handleCloseModal();
+    console.log("finish order");
     setShowProductDetailModal(false);
   };
 
   const handleAddMoreProducts = () => {
+    console.log("add more products");
     setShowProductDetailModal(false);
+    setModal(false);
+  };
+
+  const handleClose = () => {
+    setModal(false);
+    onCloseModal();
+    console.log("close modal");
   };
 
   return (
     <>
-      <Modal transparent visible={modal} animationType="slide" style ={styles.hola}>
-        <View style={styles.viewmodal}>
+      <Modal transparent visible={modal} animationType="slide">
+        <TouchableWithoutFeedback
+          style={styles.viewmodal}
+          onPress={handleClose}
+        >
           <View style={styles.card}>
             <TouchableOpacity
               style={styles.touch}
               onPress={handleShowProductDetail}
             >
-              <Text style={styles.cartCount}>{count}</Text>
+              <Text style={styles.cartCount}>{selectProduct.count}</Text>
               <AntDesign name="shoppingcart" size={24} color="black" />
             </TouchableOpacity>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </Modal>
 
       <Modal visible={showProductDetailModal} animationType="slide">
@@ -59,29 +71,19 @@ const CoreModal = ({ modal, count, title, price, image, handleCloseModal }) => {
             </View>
             <View style={styles.column}>
               <View style={styles.row}>
-                <Text style={styles.productCount}>Count: {count}</Text>
-                <Text style={styles.productCount}>Price: $ {price}</Text>
+                <Text style={styles.productCount}>Count: {selectProduct.count}</Text>
+                <Text style={styles.productCount}>Price: $ {selectProduct.price} </Text>
               </View>
             </View>
           </View>
         </View>
-        <Text style={styles.productCount}>Total: $ {price}</Text>
-        <TouchableOpacity style={styles.addToCartButton}>
-          <View style={styles.btn}>
-            <Button
-              title="  Add more"
-              style={styles.addmore}
-              onPress={handleAddMoreProducts}
-            ></Button>
-            <View></View>
-            <Button
-              title="    Finish order"
-              color={"red"}
-              style={styles.finish}
-              onPress={handleFinishOrder}
-            ></Button>
-          </View>
-        </TouchableOpacity>
+        <Text style={styles.productCount}>Total: $ {selectProduct.price}</Text>
+        <View style  ={styles.btn}>
+        <Button style={styles.addToCartButton} onPress={handleFinishOrder} title= "Finish Order"  color={"red"}>
+        </Button>
+        <Button style={styles.addMoreButton} onPress={handleAddMoreProducts} title = "Add More Products">
+        </Button>
+        </View>
       </Modal>
     </>
   );

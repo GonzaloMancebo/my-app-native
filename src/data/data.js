@@ -184,7 +184,7 @@ export default [
     description: "For all you chocolate lovers out there",
     ingredients: ["Coffee", " - cappucino", " - espresso", " - tea"],
     image: "640px-A_small_cup_of_coffee.JPG",
-    id: 9977,
+    id: 19,
     price: 500,
   },
 ];

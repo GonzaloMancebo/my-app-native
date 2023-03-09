@@ -86,13 +86,14 @@ export const styles = StyleSheet.create({
 
   viewmodal: {
     flex: 1,
-    justifyContent: "flex-end",
+    justifyContent: "center",
   },
 
   card: {
     backgroundColor: "red",
     alignItems: "center",
-    shadowColor: "#000",
     borderRadius: 200,
+    marginTop: 630
+
   },
 });
