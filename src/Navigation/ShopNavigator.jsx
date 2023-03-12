@@ -1,6 +1,7 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
+import LoginScreen from "../Screen/Login/LoginScreen";
 import HomeScreen from "../Screen/Home/HomeScreen";
 import CoffeScreen from "../Screen/Coffe/CoffeScreen";
 import CookiesScreen from "../Screen/Cookies/CookiesScreen";
@@ -13,7 +14,8 @@ const Stack = createStackNavigator();
 const ShopNavigator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Login">
+      <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Coffe" component={CoffeScreen} />
         <Stack.Screen name="Cookies" component={CookiesScreen} />

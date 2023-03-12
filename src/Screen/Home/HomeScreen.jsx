@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import { View, Text, ImageBackground } from "react-native";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import {styles} from "../Home/HomeScreenStyles"
 

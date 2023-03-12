@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+
   },
   text: {
     color: "white",
@@ -52,5 +53,6 @@ export const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: "bold",
+
   },
 });

@@ -15,6 +15,8 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     justifyContent: "center",
     textAlign: "center",
+    fontFamily: "RobotoItalicBold",
+
   },
   ingredients: {
     justifyContent: "center",

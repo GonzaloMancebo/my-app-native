@@ -22,7 +22,6 @@ export const styles = StyleSheet.create({
   },
 
   text: {
-    fontWeight: "bold",
     textAlign: "auto",
     marginLeft: 10,
   },
