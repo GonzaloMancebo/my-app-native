@@ -1,0 +1,47 @@
+{
+  "expo": {
+    "name": "my-app-native",
+    "slug": "my-app-native",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "orientation": "portrait",
+    "icon": "./assets/pantallainicio.jpg",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/pantallainicio.jpg",
+      "resizeMode": "contain",
+      "alignItems": "center",
+      "backgroundColor": "#FFFFFF"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/16fb2384-e116-438f-9ec4-d2d77c034d51"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png"
+      },
+      "package": "com.gonzalomancebo.myappnative"
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "16fb2384-e116-438f-9ec4-d2d77c034d51"
+      }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    }
+  }
+}
