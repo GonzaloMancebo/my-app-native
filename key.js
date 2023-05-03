@@ -1,3 +1,0 @@
-const STATIC_MAP_API_KEY = "AIzaSyCgm6zp2WTiXkHF--cdLMNn6IztOzYZI94"
-
-export default STATIC_MAP_API_KEY

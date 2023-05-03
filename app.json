@@ -8,10 +8,10 @@
       "android"
     ],
     "orientation": "portrait",
-    "icon": "./assets/pantallainicio.jpg",
+    "icon": "./assets/logo.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/pantallainicio.jpg",
+      "image": "./assets/logo.png",
       "resizeMode": "contain",
       "alignItems": "center",
       "backgroundColor": "#FFFFFF"
@@ -24,7 +24,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.gonzalomancebo.myappnative"
     },
     "android": {
       "adaptiveIcon": {
