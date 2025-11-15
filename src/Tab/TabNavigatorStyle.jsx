@@ -1,13 +1,12 @@
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-export const topTabsStyles = {
+const Tab = createBottomTabNavigator();
+
+export const bottomTabsStyles = {
   screenOptions: {
-    tabBarScrollEnabled: true,
-    swipeEnabled: true,
-    tabBarIndicatorStyle: { backgroundColor: "black" },
     tabBarStyle: {
       backgroundColor: "#f2f2f2",
-      elevation: 0,
-      padding: 5
+      padding: 5,
     },
     tabBarLabelStyle: {
       textTransform: "none",
@@ -16,4 +15,3 @@ export const topTabsStyles = {
     },
   },
 };
-

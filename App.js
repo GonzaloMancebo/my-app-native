@@ -2,9 +2,10 @@ import React, { useEffect } from "react";
 import ShopNavigator from "./src/Navigation/ShopNavigator";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import TopTabNavigator from "./src/Tab/TopTabNavigator";
+import TabNavigator from "./src/Tab/TabNavigator";
 import Store from "./src/Store";
 import { Provider } from "react-redux";
+import Toast from "react-native-toast-message";
 
 function App() {
   const [loaded] = useFonts({
@@ -27,8 +28,9 @@ function App() {
   return (
     <Provider store={Store}>
       <ShopNavigator>
-        <TopTabNavigator />
+        <TabNavigator />
       </ShopNavigator>
+      <Toast/>
     </Provider>
   );
 }
