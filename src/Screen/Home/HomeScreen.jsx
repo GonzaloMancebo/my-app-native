@@ -3,181 +3,151 @@ import {
   View,
   Text,
   ImageBackground,
-
+  ScrollView,
+  TouchableOpacity,
 } from "react-native";
-import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { styles } from "../Home/HomeScreenStyles";
+import { LinearGradient } from "expo-linear-gradient";
 
-function HomeScreen({ navigation }) {
+export default function HomeScreen({ navigation }) {
   const [pressed, setPressed] = useState(false);
   const [pressed1, setPressed1] = useState(false);
   const [pressed2, setPressed2] = useState(false);
   const [pressed3, setPressed3] = useState(false);
   const [pressed4, setPressed4] = useState(false);
 
+  const delay = 200; // mejor UX que 2000ms
+
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <LinearGradient
+        colors={["#3A2C22", "#5A4636", "#8B6E4C"]}
+        style={styles.container}
+      >
         <View style={styles.titlecontainer}>
           <Text style={styles.title}>Categories</Text>
         </View>
 
+        {/* Coffee */}
         <TouchableOpacity
           onPress={() => {
             setPressed(true);
             setTimeout(() => {
               navigation.push("Coffee");
-              setTimeout(() => {
-                setPressed(false);
-              }, 200);
-            }, 2000);
+              setPressed(false);
+            }, delay);
           }}
         >
-      
           <View style={styles.card}>
             <ImageBackground
               source={require("../../../assets/coffe.jpg")}
               style={styles.imageBack}
-              resizeMode={"cover"}
             >
-              <View
-                style={[
-                  styles.textContainer,
-                  pressed && styles.textContainerPressed,
-                ]}
-              >
-                <Text style={styles.text}>{pressed ? "Coffee" : null}</Text>
-              </View>
+              {pressed && (
+                <View style={styles.overlayPressed}>
+                  <Text style={styles.text}>Coffee</Text>
+                </View>
+              )}
             </ImageBackground>
           </View>
         </TouchableOpacity>
 
+        {/* Cookies */}
         <TouchableOpacity
           onPress={() => {
             setPressed1(true);
-
             setTimeout(() => {
               navigation.push("Cookies");
-
-              setTimeout(() => {
-                setPressed1(false);
-              }, 200);
-            }, 2000);
+              setPressed1(false);
+            }, delay);
           }}
         >
           <View style={styles.card}>
             <ImageBackground
               source={require("../../../assets/cookies.webp")}
               style={styles.imageBack}
-              resizeMode={"cover"}
             >
-              <View
-                style={[
-                  styles.textContainer,
-                  pressed1 && styles.textContainerPressed1,
-                ]}
-              >
-                <Text style={styles.text}>{pressed1 ? "Cookies" : null}</Text>
-              </View>
+              {pressed1 && (
+                <View style={styles.overlayPressed}>
+                  <Text style={styles.text}>Cookies</Text>
+                </View>
+              )}
             </ImageBackground>
           </View>
         </TouchableOpacity>
 
+        {/* Cupcakes */}
         <TouchableOpacity
           onPress={() => {
             setPressed2(true);
-
             setTimeout(() => {
               navigation.push("Cupcakes");
-
-              setTimeout(() => {
-                setPressed2(false);
-              }, 200);
-            }, 2000);
+              setPressed2(false);
+            }, delay);
           }}
         >
           <View style={styles.card}>
             <ImageBackground
               source={require("../../../assets/cupcake.webp")}
               style={styles.imageBack}
-              resizeMode={"cover"}
             >
-              <View
-                style={[
-                  styles.textContainer,
-                  pressed2 && styles.textContainerPressed2,
-                ]}
-              >
-                <Text style={styles.text}>{pressed2 ? "Cupcakes" : null}</Text>
-              </View>
+              {pressed2 && (
+                <View style={styles.overlayPressed}>
+                  <Text style={styles.text}>Cupcakes</Text>
+                </View>
+              )}
             </ImageBackground>
           </View>
         </TouchableOpacity>
 
+        {/* Blended */}
         <TouchableOpacity
           onPress={() => {
             setPressed3(true);
-
             setTimeout(() => {
               navigation.push("Blended");
-
-              setTimeout(() => {
-                setPressed3(false);
-              }, 200);
-            }, 2000);
+              setPressed3(false);
+            }, delay);
           }}
         >
           <View style={styles.card}>
             <ImageBackground
               source={require("../../../assets/blended.jpeg")}
               style={styles.imageBack}
-              resizeMode={"cover"}
             >
-              <View
-                style={[
-                  styles.textContainer,
-                  pressed3 && styles.textContainerPressed3,
-                ]}
-              >
-                <Text style={styles.text}>{pressed3 ? "Blended" : null}</Text>
-              </View>
+              {pressed3 && (
+                <View style={styles.overlayPressed}>
+                  <Text style={styles.text}>Blended</Text>
+                </View>
+              )}
             </ImageBackground>
           </View>
         </TouchableOpacity>
 
+        {/* Toasted */}
         <TouchableOpacity
           onPress={() => {
             setPressed4(true);
-
             setTimeout(() => {
               navigation.push("Toasted");
-
-              setTimeout(() => {
-                setPressed4(false);
-              }, 200);
-            }, 2000);
+              setPressed4(false);
+            }, delay);
           }}
         >
           <View style={styles.card}>
             <ImageBackground
               source={require("../../../assets/toasted.webp")}
               style={styles.imageBack}
-              resizeMode={"cover"}
             >
-              <View
-                style={[
-                  styles.textContainer,
-                  pressed4 && styles.textContainerPressed4,
-                ]}
-              >
-                <Text style={styles.text}>{pressed4 ? "Toasted" : null}</Text>
-              </View>
+              {pressed4 && (
+                <View style={styles.overlayPressed}>
+                  <Text style={styles.text}>Toasted</Text>
+                </View>
+              )}
             </ImageBackground>
           </View>
         </TouchableOpacity>
-      </View>
+      </LinearGradient>
     </ScrollView>
   );
 }
-
-export default HomeScreen;

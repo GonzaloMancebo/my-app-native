@@ -13,7 +13,7 @@
     "@expo/prebuild-config": "^6.0.0",
     "@react-native-async-storage/async-storage": "1.17.11",
     "@react-native-community/geolocation": "^3.0.6",
-    "@react-navigation/bottom-tabs": "^6.5.7",
+    "@react-navigation/bottom-tabs": "^6.5.16",
     "@react-navigation/material-top-tabs": "^6.6.2",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/stack": "^6.3.16",
@@ -34,6 +34,7 @@
     "react": "18.2.0",
     "react-native": "0.71.14",
     "react-native-camera": "^4.2.1",
+    "react-native-dotenv": "^3.4.11",
     "react-native-fast-image": "^8.6.3",
     "react-native-fused-location": "^1.1.2",
     "react-native-geolocation-service": "^5.3.1",
@@ -55,7 +56,8 @@
     "react-native-vector-icons": "^9.2.0",
     "react-redux": "^8.0.5",
     "redux": "^4.2.1",
-    "redux-thunk": "^2.4.2"
+    "redux-thunk": "^2.4.2",
+    "typescript": "^4.9.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.21.0",

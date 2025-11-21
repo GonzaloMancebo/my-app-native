@@ -16,7 +16,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 
-import { auth } from "../../Firebase/Database";
+import { auth } from "../../../Firebase/config";
 import Toast from "react-native-toast-message";
 import { LinearGradient } from "expo-linear-gradient";
 
@@ -199,6 +199,7 @@ function LoginScreen({ navigation }) {
             end={{ x: 1, y: 1 }}
             style={styles.loginButton}
           >
+            
             {isLoading ? (
               <View style={styles.loadingContainer}>
                 <ActivityIndicator size="small" color="white" />

@@ -1,17 +1,13 @@
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
-const Tab = createBottomTabNavigator();
-
 export const bottomTabsStyles = {
   screenOptions: {
+    tabBarActiveTintColor: "#8B6E4C",
+    tabBarInactiveTintColor: "gray",
     tabBarStyle: {
-      backgroundColor: "#f2f2f2",
-      padding: 5,
-    },
-    tabBarLabelStyle: {
-      textTransform: "none",
-      fontSize: 16,
-      fontWeight: "bold",
+      backgroundColor: "#1A1410",
+      height: 60,
+      paddingBottom: 6,
+      paddingTop: 6,
+      borderTopWidth: 0,
     },
   },
 };

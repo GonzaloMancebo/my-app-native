@@ -4,7 +4,6 @@ export const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "#000000ff",
   },
   card: {
     padding: 20,
@@ -81,12 +80,12 @@ export const styles = StyleSheet.create({
   loginButton: {
     width: 150,
     backgroundColor: "blue",
-    height:40,
+    height: 40,
     textAlign: "center",
     alignContent: "center",
-    justifyContent:"center",
-    marginTop:20,
-    borderRadius: 50
+    justifyContent: "center",
+    marginTop: 20,
+    borderRadius: 50,
   },
   loadingText: {
     color: "white",
@@ -114,6 +113,6 @@ export const styles = StyleSheet.create({
     color: "white",
     fontSize: 14,
     textAlign: "center",
-    width: "100%"
+    width: "100%",
   },
 });

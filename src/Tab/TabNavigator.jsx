@@ -1,28 +1,51 @@
-import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
-import CoffeScreen from "../Screen/Coffe/CoffeScreen";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Ionicons } from "@expo/vector-icons";
 import HomeScreen from "../Screen/Home/HomeScreen";
-import CookiesScreen from "../Screen/Cookies/CookiesScreen";
-import BlendedScreen from "../Screen/Blended/BlendedScreen";
-import CupcakesScreen from "../Screen/Cupcakes/CupcakesScreen";
-import ToastedScreen from "../Screen/Toasted/ToastedScreen";
 import { bottomTabsStyles } from "./TabNavigatorStyle";
+import ProfileScreen from "../Screen/Profile/ProfileScreen";
+import ProductsScreen from "../Screen/Products/ProductsScreen";
 
-const TopTabs = createMaterialTopTabNavigator();
+const BottomTabs = createBottomTabNavigator();
 
-function TabNavigator() {
+export default function TabNavigator() {
   return (
-    <TopTabs.Navigator
+    <BottomTabs.Navigator
       initialRouteName="Home"
-      screenOptions={bottomTabsStyles.screenOptions}
+      screenOptions={{
+        ...bottomTabsStyles.screenOptions,
+        headerShown: false,
+        tabBarShowLabel: false,
+      }}
     >
-      <TopTabs.Screen name="Home" component={HomeScreen} />
-      <TopTabs.Screen name="Coffee" component={CoffeScreen} />
-      <TopTabs.Screen name="Cookies" component={CookiesScreen} />
-      <TopTabs.Screen name="Blended" component={BlendedScreen} />
-      <TopTabs.Screen name="Cupcakes" component={CupcakesScreen} />
-      <TopTabs.Screen name="Toasted" component={ToastedScreen} />
-    </TopTabs.Navigator>
+      <BottomTabs.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <BottomTabs.Screen
+        name="Menu"
+        component={ProductsScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="restaurant-outline" size={size} color={color} />
+          ),
+        }}
+      />
+
+      <BottomTabs.Screen
+        name="Profile"
+        component={ProfileScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="person-outline" size={size} color={color} />
+          ),
+        }}
+      />
+    </BottomTabs.Navigator>
   );
 }
-
-export default TabNavigator;

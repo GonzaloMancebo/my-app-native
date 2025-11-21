@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import ShopNavigator from "./src/Navigation/ShopNavigator";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
-import TabNavigator from "./src/Tab/TabNavigator";
-import Store from "./src/Store";
-import { Provider } from "react-redux";
 import Toast from "react-native-toast-message";
+import { uploadAllData } from "./src/FirestoreUpload";
+
+// IMPORTANTE: importá la función
 
 function App() {
   const [loaded] = useFonts({
@@ -13,6 +13,7 @@ function App() {
     RobotoItalicBold: require("./assets/fonts/Roboto-BoldItalic.ttf"),
   });
 
+  // ⭐ Hook 1
   useEffect(() => {
     async function hideSplashScreen() {
       await SplashScreen.preventAutoHideAsync();
@@ -23,15 +24,19 @@ function App() {
     hideSplashScreen();
   }, [loaded]);
 
+/*   useEffect(() => {
+    if (loaded) {
+      
+    }
+  }, [loaded]); */
+
   if (!loaded) return null;
 
   return (
-    <Provider store={Store}>
-      <ShopNavigator>
-        <TabNavigator />
-      </ShopNavigator>
-      <Toast/>
-    </Provider>
+    <>
+      <ShopNavigator />
+      <Toast />
+    </>
   );
 }
 
