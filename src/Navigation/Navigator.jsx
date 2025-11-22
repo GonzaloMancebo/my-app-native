@@ -6,16 +6,19 @@ import ProductsScreen from "../Screen/Products/ProductsScreen";
 
 const Stack = createStackNavigator();
 
-const ShopNavigator = () => {
+const Navigator = ({ openCartModal }) => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={{
-          headerShown: false,
-        }}
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
       >
-        <Stack.Screen name="Home" component={TabNavigator} />
+        {/* 👇 PASAMOS openCartModal AL TAB NAVIGATOR */}
+        <Stack.Screen
+          name="Home"
+          children={() => <TabNavigator openCartModal={openCartModal} />}
+        />
+
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Products" component={ProductsScreen} />
       </Stack.Navigator>
@@ -23,4 +26,4 @@ const ShopNavigator = () => {
   );
 };
 
-export default ShopNavigator;
+export default Navigator;

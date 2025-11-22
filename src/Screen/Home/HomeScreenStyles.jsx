@@ -3,99 +3,87 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "column",
-    padding: 20,
+    backgroundColor: "#FFF",
   },
-  card: {
-    width: 400,
-    height: 170,
-    marginVertical: 20,
+
+  hero: {
+    padding: 20,
+    paddingTop: 30,
+  },
+  heroTitle: {
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "#fff",
+  },
+  heroSubtitle: {
+    color: "rgba(255,255,255,0.9)",
+    marginVertical: 6,
+  },
+  promoBadge: {
+    backgroundColor: "#fbbf24",
+    paddingVertical: 6,
+    paddingHorizontal: 12,
+    alignSelf: "flex-start",
+    borderRadius: 10,
+    marginTop: 6,
+  },
+  promoBadgeText: {
+    color: "#7c2d12",
+    fontWeight: "bold",
+    fontSize: 13,
+  },
+
+  section: {
+    paddingHorizontal: 16,
+    paddingVertical: 20,
+  },
+  sectionTitle: {
+    fontSize: 14,
+    fontWeight: "bold",
+    marginBottom: 12,
+  },
+
+  cardList: {
+    gap: 12,
+  },
+
+  /* NEWS CARDS */
+  newsCard: {
+    borderRadius: 12,
+    padding: 14,
+  },
+  newsTitle: {
+    fontWeight: "bold",
+    fontSize: 14,
+    marginBottom: 2,
+    color: "#fff",
+  },
+  newsDesc: {
+    fontSize: 12,
+    opacity: 0.9,
+    color: "#fff",
+  },
+
+  ctaCard: {
+    borderWidth: 1,
+    borderColor: "#DDD",
+    padding: 20,
+    borderRadius: 14,
     alignItems: "center",
-    justifyContent: "center",
-    backgroundSize: "cover",
+  },
+  ctaText: {
+    fontSize: 14,
+    marginBottom: 12,
+    color: "#666",
+  },
+  ctaButton: {
+    backgroundColor: "#8B6E4C",
+    paddingVertical: 10,
+    paddingHorizontal: 22,
     borderRadius: 10,
   },
-  imageBack: {
-    flex: 1,
-    width: "100%",
-    height: 170,
-  },
-  imageProfile:{
-    width: 100,
-    height: 50,
-    borderRadius: 25,
-
-  },
-  titlecontainer: {
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  modalContainer: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modalContent: {
-    backgroundColor: "#fff",
-    padding: 20,
-    borderRadius: 10,
-    width: "80%",
-    maxWidth: 300,
-    maxHeight: "50%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modalOption: {
-    padding: 10,
-    borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-    width: "100%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  modalText: {
-    fontSize: 18,
+  ctaButtonText: {
+    color: "#fff",
     fontWeight: "bold",
-  },
-  modalClose: {
-    marginTop: 20,
-    color: "#999",
-    fontSize: 18,
-    textAlign: "center",
-  },
-  textContainer: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-
-  },
-  text: {
-    color: "white",
-    textAlign: "center",
-    textAlignVertical: "center",
-    fontSize: 25,
-    width: "100%",
-  },
-  textContainerPressed: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  textContainerPressed1: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  textContainerPressed2: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  textContainerPressed3: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  textContainerPressed4: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: "bold",
-
   },
 });

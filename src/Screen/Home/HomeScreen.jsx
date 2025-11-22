@@ -1,153 +1,72 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  ImageBackground,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
-import { styles } from "../Home/HomeScreenStyles";
+import React from "react";
+import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { styles } from "./HomeScreenStyles";
+import { useNavigation } from "@react-navigation/native";
 
-export default function HomeScreen({ navigation }) {
-  const [pressed, setPressed] = useState(false);
-  const [pressed1, setPressed1] = useState(false);
-  const [pressed2, setPressed2] = useState(false);
-  const [pressed3, setPressed3] = useState(false);
-  const [pressed4, setPressed4] = useState(false);
-
-  const delay = 200; // mejor UX que 2000ms
+export default function HomeScreen() {
+  const navigation = useNavigation();
 
   return (
-    <ScrollView>
-      <LinearGradient
-        colors={["#3A2C22", "#5A4636", "#8B6E4C"]}
-        style={styles.container}
-      >
-        <View style={styles.titlecontainer}>
-          <Text style={styles.title}>Categories</Text>
+    <ScrollView
+      style={styles.container}
+      contentContainerStyle={{ paddingBottom: 40 }}
+    >
+      <LinearGradient colors={["#8C4A0E", "#B2793C"]} style={styles.hero}>
+        <Text style={styles.heroTitle}>Coffe Shop</Text>
+        <Text style={styles.heroSubtitle}>Tus bebidas y snacks favoritos</Text>
+
+        <View style={styles.promoBadge}>
+          <Text style={styles.promoBadgeText}>20% en primer pedido</Text>
         </View>
-
-        {/* Coffee */}
-        <TouchableOpacity
-          onPress={() => {
-            setPressed(true);
-            setTimeout(() => {
-              navigation.push("Coffee");
-              setPressed(false);
-            }, delay);
-          }}
-        >
-          <View style={styles.card}>
-            <ImageBackground
-              source={require("../../../assets/coffe.jpg")}
-              style={styles.imageBack}
-            >
-              {pressed && (
-                <View style={styles.overlayPressed}>
-                  <Text style={styles.text}>Coffee</Text>
-                </View>
-              )}
-            </ImageBackground>
-          </View>
-        </TouchableOpacity>
-
-        {/* Cookies */}
-        <TouchableOpacity
-          onPress={() => {
-            setPressed1(true);
-            setTimeout(() => {
-              navigation.push("Cookies");
-              setPressed1(false);
-            }, delay);
-          }}
-        >
-          <View style={styles.card}>
-            <ImageBackground
-              source={require("../../../assets/cookies.webp")}
-              style={styles.imageBack}
-            >
-              {pressed1 && (
-                <View style={styles.overlayPressed}>
-                  <Text style={styles.text}>Cookies</Text>
-                </View>
-              )}
-            </ImageBackground>
-          </View>
-        </TouchableOpacity>
-
-        {/* Cupcakes */}
-        <TouchableOpacity
-          onPress={() => {
-            setPressed2(true);
-            setTimeout(() => {
-              navigation.push("Cupcakes");
-              setPressed2(false);
-            }, delay);
-          }}
-        >
-          <View style={styles.card}>
-            <ImageBackground
-              source={require("../../../assets/cupcake.webp")}
-              style={styles.imageBack}
-            >
-              {pressed2 && (
-                <View style={styles.overlayPressed}>
-                  <Text style={styles.text}>Cupcakes</Text>
-                </View>
-              )}
-            </ImageBackground>
-          </View>
-        </TouchableOpacity>
-
-        {/* Blended */}
-        <TouchableOpacity
-          onPress={() => {
-            setPressed3(true);
-            setTimeout(() => {
-              navigation.push("Blended");
-              setPressed3(false);
-            }, delay);
-          }}
-        >
-          <View style={styles.card}>
-            <ImageBackground
-              source={require("../../../assets/blended.jpeg")}
-              style={styles.imageBack}
-            >
-              {pressed3 && (
-                <View style={styles.overlayPressed}>
-                  <Text style={styles.text}>Blended</Text>
-                </View>
-              )}
-            </ImageBackground>
-          </View>
-        </TouchableOpacity>
-
-        {/* Toasted */}
-        <TouchableOpacity
-          onPress={() => {
-            setPressed4(true);
-            setTimeout(() => {
-              navigation.push("Toasted");
-              setPressed4(false);
-            }, delay);
-          }}
-        >
-          <View style={styles.card}>
-            <ImageBackground
-              source={require("../../../assets/toasted.webp")}
-              style={styles.imageBack}
-            >
-              {pressed4 && (
-                <View style={styles.overlayPressed}>
-                  <Text style={styles.text}>Toasted</Text>
-                </View>
-              )}
-            </ImageBackground>
-          </View>
-        </TouchableOpacity>
       </LinearGradient>
+
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Novedades</Text>
+
+        <View style={styles.cardList}>
+          <LinearGradient
+            colors={["#f97316", "#f59e0b"]}
+            style={styles.newsCard}
+          >
+            <Text style={styles.newsTitle}>Espresso Especial</Text>
+            <Text style={styles.newsDesc}>Café premium recién tostado</Text>
+          </LinearGradient>
+
+          <LinearGradient
+            colors={["#fb7185", "#ec4899"]}
+            style={styles.newsCard}
+          >
+            <Text style={styles.newsTitle}>Croissant Artesanal</Text>
+            <Text style={styles.newsDesc}>Receta francesa tradicional</Text>
+          </LinearGradient>
+
+          <LinearGradient
+            colors={["#fcd34d", "#fde68a"]}
+            style={[styles.newsCard, { color: "#78350f" }]}
+          >
+            <Text style={[styles.newsTitle, { color: "#78350f" }]}>
+              Cheesecake Casero
+            </Text>
+            <Text style={[styles.newsDesc, { color: "#78350f" }]}>
+              Nuevo sabor: frambuesa
+            </Text>
+          </LinearGradient>
+        </View>
+      </View>
+
+      <View style={styles.section}>
+        <View style={styles.ctaCard}>
+          <Text style={styles.ctaText}>¿Qué deseas hoy?</Text>
+
+          <TouchableOpacity
+            style={styles.ctaButton}
+            onPress={() => navigation.navigate("Products")}
+          >
+            <Text style={styles.ctaButtonText}>Ver Productos</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
     </ScrollView>
   );
 }

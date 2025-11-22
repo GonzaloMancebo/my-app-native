@@ -1,20 +1,22 @@
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useContext } from "react";
+import { View, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { CartContext } from "../Context/CartContext";
 import HomeScreen from "../Screen/Home/HomeScreen";
-import { bottomTabsStyles } from "./TabNavigatorStyle";
-import ProfileScreen from "../Screen/Profile/ProfileScreen";
 import ProductsScreen from "../Screen/Products/ProductsScreen";
+import ProfileScreen from "../Screen/Profile/ProfileScreen";
 
 const BottomTabs = createBottomTabNavigator();
 
-export default function TabNavigator() {
+export default function TabNavigator({ openCartModal }) {
+  const { cart } = useContext(CartContext);
+  const totalItems = cart.reduce((acc, item) => acc + item.quantity, 0);
+
   return (
     <BottomTabs.Navigator
-      initialRouteName="Home"
       screenOptions={{
-        ...bottomTabsStyles.screenOptions,
         headerShown: false,
-        tabBarShowLabel: false,
       }}
     >
       <BottomTabs.Screen
@@ -32,9 +34,45 @@ export default function TabNavigator() {
         component={ProductsScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="restaurant-outline" size={size} color={color} />
+            <View>
+              <Ionicons name="restaurant-outline" size={size} color={color} />
+
+              {totalItems > 0 && (
+                <View
+                  style={{
+                    position: "absolute",
+                    top: -6,
+                    right: -10,
+                    backgroundColor: "red",
+                    borderRadius: 10,
+                    minWidth: 18,
+                    paddingHorizontal: 4,
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
+                >
+                  <Text
+                    style={{
+                      color: "white",
+                      fontSize: 11,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {totalItems}
+                  </Text>
+                </View>
+              )}
+            </View>
           ),
         }}
+        listeners={({ navigation }) => ({
+          tabPress: (e) => {
+            if (totalItems > 0) {
+              e.preventDefault();
+              openCartModal(); 
+            }
+          },
+        })}
       />
 
       <BottomTabs.Screen

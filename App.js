@@ -1,11 +1,11 @@
-import { useEffect } from "react";
-import ShopNavigator from "./src/Navigation/ShopNavigator";
+import { useEffect, useState } from "react";
+import Navigator from "./src/Navigation/Navigator";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import Toast from "react-native-toast-message";
 import { uploadAllData } from "./src/FirestoreUpload";
-
-// IMPORTANTE: importá la función
+import { CartProvider } from "./src/Context/CartContext";
+import CartModal from "./src/Components/Modal/CartModal";
 
 function App() {
   const [loaded] = useFonts({
@@ -13,7 +13,6 @@ function App() {
     RobotoItalicBold: require("./assets/fonts/Roboto-BoldItalic.ttf"),
   });
 
-  // ⭐ Hook 1
   useEffect(() => {
     async function hideSplashScreen() {
       await SplashScreen.preventAutoHideAsync();
@@ -24,19 +23,26 @@ function App() {
     hideSplashScreen();
   }, [loaded]);
 
-/*   useEffect(() => {
+  /*   useEffect(() => {
     if (loaded) {
       
     }
   }, [loaded]); */
+  const [cartModalVisible, setCartModalVisible] = useState(false);
 
   if (!loaded) return null;
 
   return (
-    <>
-      <ShopNavigator />
+    <CartProvider>
+      <Navigator openCartModal={() => setCartModalVisible(true)} />
+
+      <CartModal
+        visible={cartModalVisible}
+        onClose={() => setCartModalVisible(false)}
+      />
+
       <Toast />
-    </>
+    </CartProvider>
   );
 }
 
