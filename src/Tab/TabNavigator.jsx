@@ -69,7 +69,7 @@ export default function TabNavigator({ openCartModal }) {
           tabPress: (e) => {
             if (totalItems > 0) {
               e.preventDefault();
-              openCartModal(); 
+              openCartModal();
             }
           },
         })}

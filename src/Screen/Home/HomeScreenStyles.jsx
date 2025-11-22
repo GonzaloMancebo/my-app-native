@@ -47,7 +47,6 @@ export const styles = StyleSheet.create({
     gap: 12,
   },
 
-  /* NEWS CARDS */
   newsCard: {
     borderRadius: 12,
     padding: 14,

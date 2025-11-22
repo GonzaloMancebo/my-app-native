@@ -1,4 +1,8 @@
 import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
+const { width } = Dimensions.get("window");
+const { height } = Dimensions.get("window");
+
 
 export const styles = StyleSheet.create({
   container: {
@@ -21,8 +25,8 @@ export const styles = StyleSheet.create({
   },
 
   logo: {
-    width: 280,
-    height: 280,
+  width: width * 0.55,
+  height: width * 0.55,
     resizeMode: "contain",
     borderRadius: 500,
   },
@@ -35,6 +39,7 @@ export const styles = StyleSheet.create({
   input: {
     width: "100%",
     paddingVertical: 12,
+      paddingHorizontal: 10,     
     alignSelf: "center",
     marginTop: 20,
     marginBottom: 10,
@@ -43,6 +48,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     shadowOpacity: 0.25,
     shadowOffset: { width: 0, height: 3 },
+      color: "#fff",   
   },
 
   loginButton: {

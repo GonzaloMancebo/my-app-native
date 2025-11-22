@@ -44,15 +44,16 @@ function LoginScreen({ navigation }) {
         setEmailLogin("");
         setPasswordLogin("");
 
-        Toast.show({
-          type: "success",
-          text1: "Login exitoso!",
-        });
-
         setTimeout(() => {
           setIsLoading(false);
-          navigation.navigate("Home");
-        }, 1500);
+
+          Toast.show({
+            type: "success",
+            text1: "Login exitoso!",
+          });
+
+          navigation.navigate("MainTabs");
+        }, 1200);
       })
       .catch((error) => {
         setIsLoading(false);
@@ -199,11 +200,9 @@ function LoginScreen({ navigation }) {
             end={{ x: 1, y: 1 }}
             style={styles.loginButton}
           >
-            
             {isLoading ? (
               <View style={styles.loadingContainer}>
                 <ActivityIndicator size="small" color="white" />
-                <Text style={styles.loadingText}>Loading...</Text>
               </View>
             ) : (
               <Text style={styles.loginText}>

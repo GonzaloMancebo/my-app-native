@@ -12,11 +12,11 @@ const Navigator = ({ openCartModal }) => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Home"
+        initialRouteName="Login"
         screenOptions={{ headerShown: false }}
       >
         <Stack.Screen
-          name="Home"
+          name="MainTabs"
           children={() => <TabNavigator openCartModal={openCartModal} />}
         />
 
