@@ -29,7 +29,7 @@ function ProductsScreen() {
   const [cartModalVisible, setCartModalVisible] = useState(false);
 
   const navigation = useNavigation();
-  const { cart } = useContext(CartContext); // ⬅️ AGREGAR ESTO
+  const { cart } = useContext(CartContext);
 
   useEffect(() => {
     const fetch = async () => {
@@ -76,7 +76,14 @@ function ProductsScreen() {
 
   if (loading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "#fff" }}>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#fff",
+        }}
+      >
         <ActivityIndicator size="large" color="#8B6E4C" />
       </View>
     );
@@ -86,7 +93,6 @@ function ProductsScreen() {
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
       <StatusBar style="dark" />
 
-      {/* HEADER */}
       <View
         style={{
           flexDirection: "row",
@@ -107,7 +113,6 @@ function ProductsScreen() {
         </Text>
       </View>
 
-      {/* CATEGORIES */}
       <View style={{ paddingTop: 6, paddingBottom: 12 }}>
         <ScrollView
           horizontal
@@ -125,12 +130,18 @@ function ProductsScreen() {
               paddingVertical: 12,
               borderRadius: 22,
               marginRight: 10,
-              backgroundColor: selectedCategory === null ? "#8B6E4C" : "#e0e0e0",
+              backgroundColor:
+                selectedCategory === null ? "#8B6E4C" : "#e0e0e0",
               justifyContent: "center",
               alignItems: "center",
             }}
           >
-            <Text style={{ color: selectedCategory === null ? "white" : "black", fontWeight: "600" }}>
+            <Text
+              style={{
+                color: selectedCategory === null ? "white" : "black",
+                fontWeight: "600",
+              }}
+            >
               Todos
             </Text>
           </TouchableOpacity>
@@ -146,7 +157,8 @@ function ProductsScreen() {
                 marginRight: 10,
                 justifyContent: "center",
                 alignItems: "center",
-                backgroundColor: selectedCategory === cat ? "#8B6E4C" : "#e0e0e0",
+                backgroundColor:
+                  selectedCategory === cat ? "#8B6E4C" : "#e0e0e0",
               }}
             >
               <Text
@@ -163,7 +175,6 @@ function ProductsScreen() {
         </ScrollView>
       </View>
 
-      {/* PRODUCTS */}
       <SectionList
         sections={filteredSections}
         keyExtractor={(item) => item.id}
@@ -176,25 +187,24 @@ function ProductsScreen() {
         contentContainerStyle={{ paddingBottom: 20 }}
       />
 
-      {/* MODAL DE PRODUCTO */}
-<ProductDetailModal
-  visible={modalVisible}
-  product={selectedProduct}
-  onClose={() => setModalVisible(false)}
-  onAddToCart={() => {
-    setModalVisible(false);
-    setCartModalVisible(true);    // 👈 ahora sí se ejecuta
-  }}
-/>
+      <ProductDetailModal
+        visible={modalVisible}
+        product={selectedProduct}
+        onClose={() => setModalVisible(false)}
+        onAddToCart={() => {
+          setModalVisible(false);
+          setCartModalVisible(true);
+        }}
+      />
 
-
-
-      {/* MODAL DEL CARRITO */}
       <CartModal
         visible={cartModalVisible}
         onClose={() => setCartModalVisible(false)}
         cart={cart}
-        onCheckout={() => console.log("Finalizar compra!")}
+        onCheckout={() => {
+          setCartModalVisible(false);
+          navigation.navigate("Checkout", { cart });
+        }}
       />
     </SafeAreaView>
   );

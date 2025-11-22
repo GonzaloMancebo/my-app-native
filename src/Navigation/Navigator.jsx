@@ -3,6 +3,8 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../Screen/Login/LoginScreen";
 import TabNavigator from "../Tab/TabNavigator";
 import ProductsScreen from "../Screen/Products/ProductsScreen";
+import CheckOutScreen from "../Screen/Checkout/CheckOutScreen";
+import OrderSuccessScreen from "../Screen/OrderSuccess/OrderSuccessScreen";
 
 const Stack = createStackNavigator();
 
@@ -13,7 +15,6 @@ const Navigator = ({ openCartModal }) => {
         initialRouteName="Home"
         screenOptions={{ headerShown: false }}
       >
-        {/* 👇 PASAMOS openCartModal AL TAB NAVIGATOR */}
         <Stack.Screen
           name="Home"
           children={() => <TabNavigator openCartModal={openCartModal} />}
@@ -21,6 +22,8 @@ const Navigator = ({ openCartModal }) => {
 
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="Products" component={ProductsScreen} />
+        <Stack.Screen name="Checkout" component={CheckOutScreen} />
+        <Stack.Screen name="OrderSuccess" component={OrderSuccessScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
